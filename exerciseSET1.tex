@@ -1,0 +1,412 @@
+\section{练习题一}
+
+
+
+\begin{exercise}
+  设 $(M,g)$ 是 $n$ 维可定向黎曼流形, $X\in\mathscr{X}(M)$, $(U;x^i)$
+  是定向相符的局部坐标系, 令
+  \[\omega=\sum_{i=1}^n (-1)^{i+1}\sqrt{G}X^i\diff x^1\wedge\cdots\wedge\widehat{\diff x^i}\wedge\cdots\wedge\diff x^n,\]
+  其中 $G=\det(g_{ij})$, $X=X^i\frac{\partial}{\partial x^i}$. 证明
+  \begin{enumerate}[(1)]
+    \item $\omega$ 是 $M$ 上整体定义的 $n-1$ 次外微分式.
+    \item $i_X\diff V_M=\omega$, 其中 $i_X$ 为内乘, 定义为对任 $n$ 次外微分式 $\varphi$,
+      $\forall X_1,\cdots,X_{n-1}\in\mathscr{X}(M)$ 有
+      \[i_X\varphi(X_1,\cdots,X_{n-1})=\varphi(X,X_1,\cdots,X_{n-1}).\]
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  (1) 设 $(V;y^i)$ 是另一个定向相符的局部坐标系, 则
+  \[X=X^i\frac{\partial}{\partial x^i}=Y^i\frac{\partial}{\partial y^i}
+    =Y^i\frac{\partial x^j}{\partial y^i}\frac{\partial}{\partial x^j},\]
+    于是 $X^j=Y^i\frac{\partial x^j}{\partial y^i}$. 记
+    \[\widetilde{G} = \det\biggl(g\biggl(\pdv{y^i},\pdv{y^j}\biggr)\biggr),\]
+    则
+    \[G = \biggl(\pdv{(y^1,\cdots,y^n)}{(x^1,\cdots,x^n)}\biggr)^2\widetilde{G}.\]
+    将上述结果代入 $\omega$ 的表达式得
+    \begin{align*}
+      & (-1)^{i+1} \sqrt{G}X^i\diff x^1\wedge\cdots\wedge\widehat{\diff x^i}\wedge\cdots\wedge\diff x^n \\
+      ={} & (-1)^{i+1}\sqrt{\biggl(\frac{\partial(y^1,\cdots,y^n)}
+        {\partial(x^1,\cdots,x^n)}\biggr)^2\widetilde{G}} \cdot Y^k\frac{\partial x^i}{\partial y^k}
+        \biggl(\frac{\partial x^1}{\partial y^{j_1}}\diff y^{j_1}\biggr)
+        \wedge\cdots\wedge\widehat{\diff x^i}\wedge\cdots\wedge
+        \biggl(\frac{\partial x^n}{\partial y^{j_n}}\diff y^{j_n}\biggr) \\
+      ={} & (-1)^{i+1}\frac{\partial(y^1,\cdots,y^n)}{\partial(x^1,\cdots,x^n)}
+        \sqrt{\widetilde{G}}Y^k\frac{\partial x^i}{\partial y^k}
+        \frac{\partial x^1}{\partial y^{j_1}}\cdots\widehat{\frac{\partial x^i}{\partial y^{j_i}}}
+        \cdots\frac{\partial x^n}{\partial y^{j_n}}
+        \diff y^{j_1}\wedge\cdots\wedge\widehat{\diff y^{j_i}}\wedge\cdots\wedge\diff y^{j_n}.
+    \end{align*}
+    对于固定的 $i$,
+    \begin{align*}
+      & Y^k\frac{\partial x^i}{\partial y^k}
+        \frac{\partial x^1}{\partial y^{j_1}}\cdots\widehat{\frac{\partial x^i}{\partial y^{j_i}}}
+        \cdots\frac{\partial x^n}{\partial y^{j_n}}
+        \diff y^{j_1}\wedge\cdots\wedge\widehat{\diff y^{j_i}}\wedge\cdots\wedge\diff y^{j_n}. \\
+      ={} & Y^i \frac{\partial(x^1,\cdots,x^n)}{\partial(y^1,\cdots,y^n)}
+        \diff y^1\wedge\cdots\wedge\widehat{\diff y^i}\wedge\cdots\wedge\diff y^n.
+    \end{align*}
+    因此
+    \begin{align*}
+      \omega
+      & = \sum_{i=1}^n (-1)^{i+1} \frac{\partial(y^1,\cdots,y^n)}{\partial(x^1,\cdots,x^n)}
+        \sqrt{\widetilde{G}} Y^i \frac{\partial(x^1,\cdots,x^n)}{\partial(y^1,\cdots,y^n)}
+        \diff y^1\wedge\cdots\wedge\widehat{\diff y^i}\wedge\cdots\wedge\diff y^n \\
+      & = \sum_{i=1}^n (-1)^{i+1} \sqrt{\widetilde{G}}Y^i \diff y^1\wedge\cdots\wedge\widehat{\diff y^i}\wedge\cdots\wedge\diff y^n.
+    \end{align*}
+    即 $\omega$ 与坐标系的选取无关, 是大范围定义的几何量.
+
+    (2) 由内乘运算的性质, 对于 $\forall f\in C^{\infty}(M)$, $\varphi\in A^k(M)$, 有
+    \[i_X (f\varphi) = f i_X\varphi.\]
+    \[i_X (\varphi\wedge\psi) = i_X\varphi\wedge\psi+(-1)^k \varphi\wedge i_X\psi.\]
+    故
+    \begin{align*}
+      i_X \diff V_M
+      & = i_X \Bigl(\sqrt{G}\diff x^1\wedge\cdots\wedge\diff x^n\Bigr) \\
+      & = \sum_{i=1}^n \sqrt{G} (-1)^{i+1} \diff x^1\wedge\cdots\wedge\diff x^i(X)\wedge\cdots\diff x^n \\
+      & = \sum_{i=1}^n (-1)^{i+1} \sqrt{G}X^i\diff x^1\wedge\cdots\wedge\widehat{\diff x^i}\wedge\cdots\diff x^n \\
+      & = \omega.\qedhere
+    \end{align*}
+\end{proof}
+
+
+
+\begin{exercise}
+设 $M$ 是嵌入在 $\mathbb{R}^{n+1}$ 中的超曲面, $(x^A)$ 是 $\mathbb{R}^{n+1}$
+中的直角坐标系. 对于任意的点 $p\in M$, 存在 $p$ 在 $\mathbb{R}^{n+1}$ 中的开邻域 $U$, 使得
+$M\cap U$ 有参数表示
+\[x^A=f^A(u^1,\cdots,u^n),\quad 1\leq A\leq n+1,\quad (u^1,\cdots,u^n)\in D\subset\mathbb{R}^n,\]
+其中 $D$ 是 $\mathbb{R}^n$ 中的开邻域.
+
+(1) 证明: $M$ 上的单位法向量场 $\xi$ 的分量是 $\xi^A=W^A/W$, 其中
+\[W^A=(-1)^{A+1}\frac{\partial (f^1,\cdots,\widehat{f^A},\cdots,f^{n+1})}{\partial(u^1,\cdots,u^n)},
+  \quad W=\biggl(\sum_A (W^A)^2\biggr)^{1/2};\]
+
+(2) 求 $\mathbb{R}^{n+1}$ 在 $M$ 上的诱导黎曼度量 $g=\sum g_{ij}\diff u^i\diff u^j$, 并证明
+$G=\det(g_{ij})=W^2$;
+
+(3) 证明: $M$ 的体积元素是
+\[\diff V_M = i(\xi)(\diff x^1\wedge\cdots\wedge\diff x^{n+1})|_M.\]
+\end{exercise}
+
+\begin{proof}
+  (1) $M$ 的自然标架场为
+  \[e_i=\frac{\partial}{\partial u^i}=\frac{\partial f^A}{\partial u^i}\frac{\partial}{\partial x^A}
+    =\biggl(\frac{\partial f^1}{\partial u^i},\cdots,\frac{\partial f^{n+1}}{\partial u^i}\biggr),
+    \quad (i=1,\cdots,n).\]
+  而
+  \begin{align*}
+    0
+    ={} & \begin{vmatrix}
+      \frac{\partial f^1}{\partial u^1} & \cdots & \frac{\partial f^1}{\partial u^n} & \frac{\partial f^1}{\partial u^i} \\
+      \vdots & \ddots & \vdots & \vdots \\
+      \frac{\partial f^{n+1}}{\partial u^1} & \cdots & \frac{\partial f^{n+1}}{\partial u^n} & \frac{\partial f^{n+1}}{\partial u^i}
+    \end{vmatrix} \\
+    ={} & \frac{\partial f^1}{\partial u^i}(-1)^{n+2}
+      \begin{vmatrix}
+        \frac{\partial f^2}{\partial u^1} & \cdots & \frac{\partial f^2}{\partial u^n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f^{n+1}}{\partial u^1} & \cdots & \frac{\partial f^{n+1}}{\partial u^n}
+      \end{vmatrix}
+      +
+      \frac{\partial f^2}{\partial u^i}(-1)^{n+3}
+      \begin{vmatrix}
+        \frac{\partial f^1}{\partial u^1} & \cdots & \frac{\partial f^1}{\partial u^n} \\
+        \frac{\partial f^3}{\partial u^1} & \cdots & \frac{\partial f^3}{\partial u^n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f^{n+1}}{\partial u^1} & \cdots & \frac{\partial f^{n+1}}{\partial u^n}
+      \end{vmatrix} \\
+    & + \cdots +
+      \frac{\partial f^{n+1}}{\partial u^i}(-1)^{2n+2}
+      \begin{vmatrix}
+        \frac{\partial f^1}{\partial u^1} & \cdots & \frac{\partial f^1}{\partial u^n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f^n}{\partial u^1} & \cdots & \frac{\partial f^n}{\partial u^n}
+      \end{vmatrix} \\
+    ={} & (-1)^n \biggl(\frac{\partial f^1}{\partial u^i} W^1 + 
+      \frac{\partial f^2}{\partial u^i} W^2 + \cdots +
+      \frac{\partial f^{n+1}}{\partial u^i} W^{n+1}\biggr) \\
+    ={} & (-1)^n \langle e_i,\xi\rangle W.
+  \end{align*}
+  因此 $\xi$ 是法向量且 $W=\Bigl(\sum_A (W^A)^2\Bigr)^{1/2}$.
+
+  (2) 由于
+  \[g_{ij}=\innerp{e_i}{e_j} = \innerp*{\frac{\partial f^A}{\partial u^i}\frac{\partial}{\partial x^A}}
+                                      {\frac{\partial f^B}{\partial u^j}\frac{\partial}{\partial x^B}}
+    = \frac{\partial f^A}{\partial u^i}\frac{\partial f^A}{\partial u^j}.\]
+  故
+  \begin{align*}
+    \det(g_{ij})
+    & = \begin{vmatrix}
+      \frac{\partial f^A}{\partial u^1}\frac{\partial f^A}{\partial u^1} &
+      \cdots &
+      \frac{\partial f^A}{\partial u^1}\frac{\partial f^A}{\partial u^n} \\
+      \vdots & \ddots & \vdots \\
+      \frac{\partial f^A}{\partial u^n}\frac{\partial f^A}{\partial u^1} &
+      \cdots &
+      \frac{\partial f^A}{\partial u^n}\frac{\partial f^A}{\partial u^n}
+      \end{vmatrix} \\
+    & = \begin{vmatrix}
+      \begin{pmatrix}
+        \frac{\partial f^A}{\partial u^1} \\
+        \vdots \\
+        \frac{\partial f^A}{\partial u^n}
+      \end{pmatrix}
+      \begin{pmatrix}
+        \frac{\partial f^A}{\partial u^1} & \cdots & \frac{\partial f^A}{\partial u^n}
+      \end{pmatrix}
+    \end{vmatrix} \\
+    &  = \det\begin{Bmatrix}
+      \begin{pmatrix}
+        \frac{\partial f^1}{\partial u^1} & \cdots & \frac{\partial f^{n+1}}{\partial u^1} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f^1}{\partial u^n} & \cdots & \frac{\partial f^{n+1}}{\partial u^n}
+      \end{pmatrix}
+      \begin{pmatrix}
+        \frac{\partial f^1}{\partial u^1} & \cdots & \frac{\partial f^1}{\partial u^n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial f^{n+1}}{\partial u^1} & \cdots & \frac{\partial f^{n+1}}{\partial u^n}
+      \end{pmatrix}
+    \end{Bmatrix}.
+  \end{align*}
+  由于 $M$ 是嵌入超曲面, 故 $\frac{\partial (f^1,\cdots f^{n+1})}{\partial (u^1,\cdots,u^n)}$
+  是秩为 $n$ 的矩阵, 其必有某一行可由其余行线性表示, 因此可取局部坐标系 $(u^1,\cdots,u^n)$ 使得
+  $\frac{\partial f^{n+1}}{\partial u^i}=0$, $i=1,2,\cdots,n$. 从而
+  \[\det(g_{ij}) = \left\lvert\frac{\partial (f^1,\cdots,f^n)}{\partial (u^1,\cdots,u^n)}\right\rvert^2.,\]
+  此时
+  \[W^A = \begin{cases}
+    \frac{\partial (f^1,\cdots,f^n)}{\partial (u^1,\cdots,u^n)}, & A=n+1, \\
+    0, & A\neq n+1.
+  \end{cases}\]
+  因此 $\det(g_{ij})=|W|^2=G$.
+
+  (3)
+  \begin{align*}
+    & i_{\xi}(\diff x^1\wedge\cdots\wedge\diff x^{n+1}) \\
+    ={} & (-1)^{A+1}\xi^A\diff x^1\wedge\cdots\widehat{\diff x^A}\wedge\cdots\wedge\diff x^{n+1}|_M \\
+    ={} & (-1)^{A+1}\frac{W^A}{A} \frac{\partial x^1}{\partial u^{i_1}}
+      \cdots\widehat{\frac{\partial x^A}{\partial u^{i_A}}}
+      \frac{\partial x^{n+1}}{\partial u^{i_{n+1}}}
+      \diff u^{i_1}\wedge\cdots\wedge\widehat{\diff u^{i_A}}\wedge\cdots\wedge\diff u^{i_{n+1}} \\
+    ={} & (-1)^{A+1}\frac{W^A}{A} \frac{\partial x^1}{\partial u^{i_1}}
+      \cdots\widehat{\frac{\partial x^A}{\partial u^{i_A}}}
+      \frac{\partial x^{n+1}}{\partial u^{i_{n+1}}}
+      \delta^{1\cdots n}_{i_1\cdots\widehat{i_A}\cdots i_{n+1}}
+      \diff u^1\wedge\cdots\wedge\diff u^n \\
+    ={} & (-1)^{A+1}\frac{W^A}{W}
+      \begin{vmatrix}
+        \frac{\partial x^1}{\partial u^1} & \cdots & \frac{\partial x^1}{\partial u^n} \\
+        \vdots & \ddots & \vdots \\
+        \frac{\partial x^{n+1}}{\partial u^1} & \cdots & \frac{\partial x^{n+1}}{\partial u^n}
+      \end{vmatrix}
+      \diff u^1\wedge\cdots\wedge\diff u^n\;
+      (\text{行列式中无\ }\frac{\partial x^A}{\partial u^{\cdot}}\text{\ 这一行}) \\
+    ={} & W\diff u^1\wedge\cdots\wedge\diff u^n = \diff V_M.\qedhere
+  \end{align*}
+\end{proof}
+
+
+
+\begin{exercise}[4]
+  设 $M$ 是 $m$ 维光滑流形, $g$ 和 $\tilde{g}$ 是 $M$ 上的两个黎曼度量.
+  如果存在光滑的正函数 $\lambda\in C^{\infty}(M)$, 使得 $\tilde{g}=\lambda^2 g$,
+  则 $g$ 和 $\tilde{g}$ 互称为共形的黎曼度量, 简称为共形度量.
+
+  (1) 假定 $(U;x^i)$ 是 $M$ 的容许局部坐标系, 证明: 共形的黎曼度量 $g$ 和 $\tilde{g}$
+  的 Christoffel 记号 $\Gamma_{ij}^k$ 和 $\tilde{\Gamma}_{ij}^k$ 满足如下的关系式:
+  \[\tilde{\Gamma}_{ij}^k = \Gamma_{ij}^k
+    +\delta_i^k \frac{\partial}{\partial x^j}(\ln\lambda)
+    +\delta_j^k \frac{\partial}{\partial x^i}(\ln\lambda)
+    -g_{ij}g^{kl}\frac{\partial}{\partial x^l}(\ln\lambda).\]
+  特别地, 如果 $\lambda=e^{\rho}$, $\rho\in C^{\infty}(M)$, 则上式成为
+  \[\tilde{\Gamma}_{ij}^k = \Gamma_{ij}^k
+    + \delta_i^k \frac{\partial\rho}{\partial x^j}
+    + \delta_j^k \frac{\partial\rho}{\partial x^i}
+    -g_{ij}g^{kl}\frac{\partial\rho}{\partial x^l}.\]
+
+  (2) 设 $\Delta_g$ 和 $\Delta_{\tilde{g}}$ 分别是黎曼度量 $g$ 和 $\tilde{g}=\lambda^2g$
+  的 Beltrami-Laplace 算子, 利用 (1) 的结论证明:
+  \[\Delta_{\tilde{g}} f = \lambda^{-2}
+    \bigl(\Delta_g(f) + (m-2)g(\nabla(\ln\lambda),\nabla f)\bigr),\quad\forall f\in C^{\infty}(M).\]
+\end{exercise}
+
+\begin{proof}
+  (1) 由定义
+  \begin{align*}
+    \tilde{\Gamma}_{ij}^k
+    & = \frac{1}{2}\tilde{g}^{kl}\biggl(\frac{\partial\tilde{g}_{lj}}{\partial x^i}
+      + \frac{\partial\tilde{g}_{li}}{\partial x^j}
+      - \frac{\partial\tilde{g}_{ij}}{\partial x^l}\biggr) \\
+    & = \frac{1}{2}\frac{1}{\lambda^2} g^{kl}
+      \biggl(\frac{\partial (\lambda^2 g_{lj})}{\partial x^i}
+      + \frac{\partial (\lambda^2 g_{li})}{\partial x^j}
+      - \frac{\partial (\lambda^2 g_{ij})}{\partial x^l}\biggr) \\
+    & = \frac{1}{2}\frac{1}{\lambda^2} g^{kl}
+      \biggl(2\lambda\frac{\partial\lambda}{\partial x^i} g_{lj}
+      + 2\lambda\frac{\partial\lambda}{\partial x^j} g_{li}
+      - 2\lambda\frac{\partial\lambda}{\partial x^l} g_{ij}\biggr)
+      + \Gamma_{ij}^k \\
+    & = \Gamma_{ij}^k
+      + \delta_i^k \frac{\partial}{\partial x^j}(\ln\lambda)
+      + \delta_j^k \frac{\partial}{\partial x^i}(\ln\lambda)
+      - g_{ij}g^{kl}\frac{\partial}{\partial x^l}(\ln\lambda).
+  \end{align*}
+
+  (2) 由 Laplace 算子定义,
+  \[\Delta f = \tr\Hess(f) = g^{ij}(\D\diff f)
+    \biggl(\frac{\partial}{\partial x^i},\frac{\partial}{\partial x^j}\biggr).\]
+  而
+  \[\D\diff f = \D(f_i\diff x^i)
+    = \biggl(\frac{\partial f^i}{\partial x^j}-f_k\Gamma_{ij}^k\biggr)\diff x^j\otimes\diff x^i.\]
+  故
+  \begin{align*}
+    \Delta f
+    & = g^{ij}\biggl(\frac{\partial f^i}{\partial x^j}-f_k\Gamma_{ij}^k\biggr) \\
+    & = \frac{\partial}{\partial x^j}\biggl(g^{ij}\frac{\partial f}{\partial x^i}\biggr)
+      - f_i\frac{\partial g^{ij}}{\partial x^j}
+      - f_k\Gamma_{ij}^k g^{ij} \\
+    & = \frac{\partial}{\partial x^j}\biggl(g^{ij}\frac{\partial f}{\partial x^i}\biggr)
+      + \frac{1}{2}g^{kl}\frac{\partial g_{kl}}{\partial x^j}
+      g^{ij}\frac{\partial f}{\partial x^i} \\
+    & = \frac{1}{\sqrt{G}}\frac{\partial}{\partial x^j}
+      \biggl(\sqrt{G} g^{ij}\frac{\partial f}{\partial x^i}\biggr).
+  \end{align*}
+  故对于 $\tilde{g}=\lambda^2 g$, $\widetilde{G}=\lambda^{2n} G$, 有
+  \begin{align*}
+    \Delta_{\tilde{g}} f
+    & = \frac{1}{\sqrt{\lambda^{2n} G}} \frac{\partial}{\partial x^j}
+      \biggl(\sqrt{\lambda^{2n}G} \frac{1}{\lambda^2} g^{ij} \frac{\partial f}{\partial x^i}\biggr) \\
+    & = \frac{1}{\lambda^n}\frac{1}{\sqrt{G}}
+      \biggl(\frac{\partial\lambda^{n-2}}{\partial x^j} \sqrt{G} g^{ij}
+      \frac{\partial f}{\partial x^i}
+      + \lambda^{n-2}\frac{\partial}{\partial x^j}
+        \biggl(\sqrt{G} g^{ij} \frac{\partial f}{\partial x^i}\biggr)
+      \biggr) \\
+    & = \frac{1}{\lambda^2}\Delta_g f + (n-2) \frac{1}{\lambda^3}\frac{\partial\lambda}{\partial x^j}
+      g^{ij}\frac{\partial f}{\partial x^i} \\
+    & = \lambda^2\biggl(\Delta_g f+(n-2)g^{ij}\frac{\partial\ln\lambda}{\partial x^j}
+      \frac{\partial f}{\partial x^i}\biggr).\qedhere
+  \end{align*}
+\end{proof}
+
+
+
+\begin{exercise}[6]
+  设 $(M,g)$ 为黎曼流形, 若对任意 $x,y\in M$, $M$ 中从 $x$ 到 $y$ 的平行移动
+  与连接 $x$ 至 $y$ 的曲线段无关, 则 $M$ 的曲率张量恒为零.
+\end{exercise}
+
+\begin{proof}
+  $\forall X,Y\in\mathscr{X}(M)$, 令 $\gamma(t)$ 与 $\xi(s)$ 是连接 $x$ 与 $y$ 的曲线,
+  且 $X|_{\gamma}=\gamma'(t)$, $Y|_{\xi}=\xi'(s)$. 现设 $Z\in\mathscr{X}(M)$
+  即是沿 $\gamma(t)$ 的平行移动, 又是沿 $\xi(s)$ 的平行移动得到的, 即
+  \[Z(b) = P_a^b(Z(a)) = \overline{P}_a^b(Z(a)),\]
+  其中 $P_a^b$ 与 $\overline{P}_a^b$ 分别为沿 $\gamma(t)$ 和 $\xi(s)$
+  的平行同构, 这里 $\Gamma(a)=\xi(a)=x$, 则
+  \[\D_{\gamma'(a)}Z = \D_X Z(x)=0,\]
+  \[\D_{\xi'(a)}Z = \D_Y Z(x)=0.\]
+  $M$ 的曲率张量 $R$ 满足
+  \begin{align*}
+    R(X,Y)Z|_x
+    & = \Bigl(\D_X\D_Y Z
+      -\D_Y\D_X Z-\D_{[X,Y]}Z\Bigr)(x) \\
+    & = \D_{\gamma'(a)}\D_{\xi'(s)}Z
+      - \D_{\xi'(a)}\D_{\gamma'(t)}Z.
+  \end{align*}
+  由于 $x$ 是任意的, 从而曲率张量 $R\equiv 0$.
+\end{proof}
+
+
+
+\begin{exercise}
+  设 $(M,g)$ 是 $n$ $(\geq 3)$ 维连通黎曼流形, 若对任意 $X,Y,Z,W\in\mathscr{X}(M)$ 满足恒等式
+  \[R(X,Y,Z,W) = \frac{1}{n-1}\bigl(\Ric(X,W) g(Y,Z) - \Ric(X,Z) g(Y,W)\bigr).\]
+  证明 $(M,g)$ 是常曲率空间.
+\end{exercise}
+
+\begin{proof}
+  $\forall x\in M$, 取 $M_x$ 的幺正基 $\{e_i\}$ 使 $M$ 的 Ricci 张量对角化,
+  即 $R_{ij} = \Ric(e_i,e_j) = \lambda_i\delta_{ij}$. 于是
+  \begin{align*}
+    R(e_i,e_j,e_k,e_l)
+    & = \frac{1}{n-1}\bigl(\Ric(e_i,e_l)g_{jk} - \Ric(e_i,e_k)g_{jl}\bigr) \\
+    & = \frac{\lambda_i}{n-1}\bigl(\delta_{il}\delta_{jk} - \delta_{ik}\delta_{jl}\bigr).
+  \end{align*}
+  由 $e_i,e_j$ 张成的截面的截面曲率为
+  \begin{align*}
+    K_x(e_i,e_j)
+    & = -\frac{R(e_i,e_j,e_i,e_j)}{|e_i\wedge e_j|^2}
+      = -\frac{\lambda_i}{n-1}\bigl(\delta_{ij}^2 - \delta_{ii}\delta_{jj}\bigr) \\
+    & = \frac{\lambda_i}{n-1}.\quad(i\neq j) \\
+    K_x(e_j,e_i)
+    & = \frac{\lambda_j}{n-1}.
+  \end{align*}
+  记 $\Pi = \Span\{e_i,e_j\}$, 则
+  \[K_x(\Pi) = \frac{\lambda_i}{n-1}=\frac{\lambda_j}{n-1}\Rightarrow \lambda_i=\lambda_j=\lambda(x),\]
+  即 $K_x(\Pi) = \frac{\lambda(x)}{n-1}$ 与截面 $\Pi$ 无关.
+  又因为 $n\geq 3$, $M$ 连通, 由 Schur 引理知, $\lambda(x)$ 是 $M$ 上的常函数,
+  即 $(M,g)$ 是常曲率空间.
+\end{proof}
+
+
+\begin{exercise}
+  设 $(M,g)$ 是 $n(\geq 3)$ 维连通黎曼流形, 且有 $\lambda\in C^{\infty}(M)$, 使得
+  $\Ric = \lambda g$, 证明
+  \begin{enumerate}[(1)]
+    \item $M$ 是 Einstein 流形, 即 $M$ 的数量曲率为常数;
+    \item 当 $n=3$ 时, $M$ 是常曲率空间;
+    \item 若 $M$ 的数量曲率 $S\neq 0$, 则 $M$ 上不存在非零平行向量场.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  (1) 设 $\{e_i\}$ 是 $(M,g)$ 的局部标架场, $\{\omega^i\}$
+  为对偶标架场, 则\footnote{下式第一个等号就是 Ricci 曲率张量的定义,
+  见黎曼几何引论 Page 247--248. 讲义上给的 Ricci 曲率张量的定义是在幺正基下的特殊形式.}
+  \[R_{ij} = g^{kl}R_{iklj} = \lambda g_{ij},\]
+  取 trace 得 $M$ 的数量曲率
+  \[S = g^{ij}R_{ij} = \lambda g^{ij}g_{ij} = n\lambda.\]
+
+  下证 $\lambda$ 为常值函数, 当取 $\{e_i\}$ 是幺正标架时, $g_{ij}=g^{ij}=\delta_{ij}$,
+  故 $R_{ij}=R_{ikkj}=\lambda\delta_{ij}$ (这里要关于指标 $k$ 求和),
+  于是 $R_{ikki}=n\lambda$ (这里要关于指标 $k,l$ 求和),
+  \[n e_h(\lambda) = \D_{e_h} R_{ikki} = R_{ikki,h}.\]
+  由 $M$ 的第二 Bianchi 恒等式
+  \begin{align*}
+    0
+    & = R_{ikki,h} + R_{ikih,k} + R_{ikhk,i} \\
+    & = R_{ikki,h} + R_{ikih,k} + R_{kihi,k} \\
+    & = R_{ikki,h} + 2R_{ikih,k} \\
+    & = R_{ikki,h} - 2R_{kiih,k} \\
+    & = n e_h(\lambda) - 2\D_{e_k}(\lambda\delta_{kh}) \\
+    & = (n-2)e_h(\lambda).
+  \end{align*}
+  因为 $n\geq 3$, 故对任意 $h=1,2,\cdots,n$, 有 $e_h(\lambda)=0$,
+  从而 $\diff\lambda = e_h(\lambda)\omega^h=0$,
+  又 $M$ 是连通流形, 故 $\lambda$ 为常数, 从而数量曲率 $S=n\lambda$ 也为常数.
+
+  (2) 当 $n=3$ 时, 由 $\sum_{k=1}^3 R_{ikki}=\lambda$ (固定 $i$), 得
+  \[\lambda = R_{i11i}+R_{i22i}+R_{i33i} = K_{i1}+K_{i2}+K_{i3},\]
+  其中 $K_{i1}$, $K_{i2}$, $K_{i3}$ 分别是由 $e_i$ 与 $e_1,e_2,e_3$
+  张成的截面曲率. 于是当 $i=1$ 时有
+  \[K(\Pi_{12}) + K(\Pi_{13}) = \lambda,\]
+  当 $i=2$ 时,
+  \[K(\Pi_{21}) + K(\Pi_{23}) = \lambda,\]
+  当 $i=3$ 时,
+  \[K(\Pi_{31}) + K(\Pi_{32}) = \lambda.\]
+  由此得 $K(\Pi_{12}) = K(\Pi_{13}) = K(\Pi_{23})$,
+  从而 $M$ 的截面曲率为常数 $\frac{\lambda}{2}$, 即 $M$ 是常曲率空间.
+
+  (3) 假设 $M$ 上存在非零的平行向量场, 则其长度为常数, 将其单位化后仍为平行向量场, 设之为 $e$, 则
+  \[\Ric(e) = \Ric(e,e) = g^{kl}R(e,e_k,e_l,e) = \lambda g(e,e) = \lambda.\]
+  而
+  \begin{align*}
+    R(e,e_k,e_l,e)
+    & = R(e_k,e,e,e_l) \\
+    & = \innerp*{R(e_k,e)e}{e_l} \\
+    & = \innerp*{\D_{e_k}\D_e e - \D_e\D_{e_k} e - \D_{[e_k,e]}e}{e_l} \\
+    & = 0,
+  \end{align*}
+  故 $\lambda=0$, 这与 $S=n\lambda\neq 0$ 相矛盾,
+  因此 $M$ 上不存在非零平行向量场.
+\end{proof}

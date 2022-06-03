@@ -1,0 +1,231 @@
+\section{练习题三}
+
+
+
+\begin{exercise}[2]
+  设 $x\in M$, 假设从 $x$ 出发的测地线 $\gamma$ 上所有正常 Jacobi 场都是几乎平行的,
+  即存在沿 $\gamma$ 的平行单位向量场 $W(t)$, 使得满足 $U(0)=0$ 的 Jacobi 场
+  $U(t)$ 可以表示为 $U(t)=f(t)W(t)$,
+  其中 $f(t)$ 是定义在 $[0,b]$ 上的光滑函数, $\gamma\colon [0,b]\to M$ 是测地线.
+  \begin{enumerate}[(1)]
+    \item 令 $\widetilde{S}$ 是 $M_x$ 的子空间, 在 $x$ 的一个邻域内令 $S=\exp_x\widetilde{S}$.
+      证明: 如果 $\gamma'(0)\in\widetilde{s}$, $\gamma([0,b])\subset S$, 则
+      $P^{\gamma}$ 将 $\widetilde{S}$ 平行移动到 $\gamma(b)$ 的切空间 $S_{\gamma(b)}$.
+    \item $M_x$ 中所有截面曲率是常数.
+    \item 常曲率空间的 Jacobi 场都是几乎平行的.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  (1) 设 $\gamma(0)=x$, $\{e_i\mid i=1,\cdots,n\}$ 是 $M_x$ 的幺正基, $e_1=\gamma'(0)$.
+  将 $e_i$ 沿 $\gamma(t)$ 平移得 $e_i(t)$, 其中 $e_1(t)=\gamma'(t)$.
+  $\{e_i(t)\mid i=1,\cdots,n\}$ 是 $M_{\gamma(t)}$ 的幺正基. 设 $U_i(t)$ ($i\geq 2$)
+  是满足 $U_i(0)=0$, $U_i'(0)=e_i$ 的沿 $\gamma$ 的正常 Jacobi 场, 由于 $M$ 的 Jacobi 场是
+  几乎平行的, 故必有 $U_i(t)=f_i(t)e_i(t)$, 同时 $U_i(t)$ 还是 $\gamma(t)=\exp_x (t\gamma'(0))$
+  的测地变分 $\gamma_u(t)=\exp_x t(\gamma'(0)+ue_i)$ 的变分场, 故
+  \[U_i(t) = t\diff\exp_x (te_i) = f_i(t)e_i(t).\]
+  这说明 $\diff\exp_x e_i\parallel e_i(t)$. 现设 $\widetilde{S}=\Span\{e_j\}$
+  是 $M_x$ 的子空间, 则 $\diff\exp_x\widetilde{S}=\Span\{e_j(t)\}$,
+  由定义它必是 $S=\exp_x\widetilde{S}$ 的切空间, 故 $P^{\gamma}=S_{\gamma(t)}$.
+
+  (2) 由于 $U_i(t) = f_i(t)e_i(t)$ 是 Jacobi 场, 故
+  \[f_i''(t)e_i(t) = f_i(t)R(\gamma'(t),e_i(t))\gamma'(t),\quad i\geq 2.\]
+  取 $j\neq i$, 且当 $t>0$ 时, $f_i(t)\neq 0$, 则
+  \[0 = f_i''(t)\innerp{e_i(t)}{e_j(t)} =
+    f_i(t)\innerp*{R(\gamma'(t),e_i(t))\gamma'(t)}{e_j(t)}.\]
+  故对任意 $t>0$, 有
+  \[\innerp*{R(\gamma'(t),e_i(t))\gamma'(t)}{e_j(t)} = 0.\]
+  令 $t\to 0$, 得 $\innerp{R(e_1,e_i)e_1}{e_j}=0$ (这里都是固定的 $i,j$).
+  由 $\gamma$ 的任意性知对任意正交的向量 $X,Y,Z\in M_x$ 有
+  \[R(X,Y,X,Z)=0.\]
+  令 $e=\sum_{i\geq 2} \lambda_i e_i$ 是 $M_x$ 中单位向量, 则易知
+  \[U(t) = \sum_{i=2}^n \lambda_i U_i(t) = \sum_{i=2}^n \lambda_i f_i(t)e_i(t)\]
+  是满足 $U(0)=0$, $U'(0)=e$ 的 Jacobi 场, 由几乎平行性, 必有 $U(t)=f(t)e(t)$,
+  其中 $e(t)=\sum_{i\geq 2} \lambda_ie_i(t)$, 于是
+  \[f(t)e(t) = \sum_{i=2}^n \lambda_i f_i(t)e_i(t),\]
+  故
+  \[e(t) = \sum_{i=2}^n \lambda_i\biggl(\frac{f_i(t)}{f(t)}\biggr)e_i(t),\]
+  所以
+  \[0 = \D_{\gamma'}e(t) = \sum_{i=2}^n \lambda_i
+    \biggl(\frac{f_i(t)}{f(t)}\biggr)'e_i(t).\]
+  只要某个 $\lambda_i\neq 0$, 便有 $f_i(t)=c_if(t)$, 代入 $U_i(t)$ 的 Jacobi 方程
+  得, 对该固定的 $i\neq 1$, $c_i\neq 0$, 有
+  \[U_i''(t) = f_i''(t)e_i(t) = f_i(t)R(\gamma'(t),e_i(t))\gamma'(t),\]
+  故
+  \[c_i f''(t)e_i(t) = c_i f(t)R(\gamma'(t),e_i(t))\gamma'(t),\]
+  故
+  \[c_i f''(t) = -c_i f(t)K(\gamma'(t),e_i(t)),\]
+  故
+  \[K(\gamma'(t),e_i(t)) = -\frac{f''(t)}{f(t)},\]
+  所以
+  \[K(e_1,e_i) = -\lim_{t\to 0}\frac{f''(t)}{f(t)}.\]
+  由 $\gamma(t)$ 的任意性, 对其他指标进行同样处理, 便有
+  $\forall X,Y\in M_x$, $K(X,Y)$ 都一样, 即 $M_x$ 的所有截面曲率相同.
+
+  (3) 设 $U(t)$ 是满足 $U(0)=0$ 的正常 Jacobi 场, 则 $U(t)$ 必能表示成
+  $\{e_i(t)\mid i=2,\cdots,n\}$ 的线性组合, 设
+  \[U(t) = \sum_{i=2}^n U^i(t)e_i(t).\]
+  由于 $U(t)$ 满足 Jacobi 方程, 即
+  \[U''(t) = \sum_{i=2}^n {U^i}''(t)e_i(t) = R(\gamma'(t),U(t))\gamma'(t).\]
+  也即
+  \[{U^i}''(t)e_i(t) = U^j(t)R(\gamma'(t),e_j(t))\gamma'(t),\]
+  等式两边与 $e_i(t)$ 作内积得,
+  \begin{align*}
+    {U^i}''(t)
+    & = U^j(t)\innerp*{R(e_1(t),e_j(t))e_1(t)}{e_i(t)} \\
+    & = - U^j(t)c(\delta_{11}\delta_{ji} - \delta_{1i}\delta_{1j}) \\
+    & = - cU^i(t),
+  \end{align*}
+  其中 $c$ 为 $M$ 的截面曲率. 因此每个 $U^i(t)$ ($2\leq i\leq n$)
+  满足带初值条件的常微分方程
+  \[\begin{cases}
+    f''(t)+cf(t)=0, \\
+    f(0) = 0,
+  \end{cases}\]
+  直接解出
+  \[f(t) = \begin{cases}
+    A\sinh\bigl(\sqrt{-c}t\bigr), & c<0, \\
+    At, & c=0, \\
+    A\sin\bigl(\sqrt{c}t\bigr), & c>0.
+  \end{cases}\]
+  将之统一记为 $f(t) = As(t)$, 其中 $s(t)$ 为光滑函数, 则每个 $U^i$ 可表示为 $U^i(t)=a_is(t)$,
+  因此
+  \[U(t) = \sum_{i=2}^n a_is(t)e_i(t) = 
+    s(t)\sqrt{\sum_{i=2}^n a_i^2}\cdot\frac{1}{\sqrt{\sum_{i=2}^n a_i^2}}\sum_{i=2}^n a_ie_i(t),\]
+  其中 $\frac{1}{\sqrt{\sum_{i=2}^n a_i^2}}\sum_{i=2}^n a_ie_i(t)$
+  是沿 $\gamma$ 的单位平行向量场, 此即常曲率空间中的向量场是几乎平行的.
+\end{proof}
+
+
+
+\begin{exercise}
+  设 $X$, $Y$ 是沿 $\gamma\colon [0,b]\to M$ 的 Jacobi 场, 证明
+  \[\innerp*{X}{\D_{\gamma'}Y} - \innerp*{\D_{\gamma'}X}{Y} = C.\]
+\end{exercise}
+
+\begin{proof}
+  令 $F(t)=\innerp*{X}{\D_{\gamma'}Y} - \innerp*{\D_{\gamma'}X}{Y}$,
+  由于 $X$, $Y$ 均为 Jacobi 场, 它们都满足 Jacobi 方程, 即
+  \[X'' = R(\gamma', X)\gamma',\quad Y'' = R(\gamma',Y)\gamma'.\]
+  故
+  \begin{align*}
+    \frac{\diff}{\diff t}F(t)
+    & = \D_{\gamma'}\Bigl(\innerp*{X}{\D_{\gamma'}Y} - \innerp*{\D_{\gamma'}X}{Y}\Bigr) \\
+    & = \innerp*{\D_{\gamma'}X}{\D_{\gamma'}Y} + \innerp{X}{Y''}
+      - \innerp{X''}{Y} - \innerp*{\D_{\gamma'}X}{\D_{\gamma'}Y} \\
+    & = \innerp*{X}{R(\gamma',Y)\gamma'} - \innerp*{R(\gamma',X)\gamma'}{Y} \\
+    & = 0.
+  \end{align*}
+  所以 $F(t)=C$.
+\end{proof}
+
+
+
+\begin{exercise}[5]
+  设 $(M,g)$ 是黎曼流形, 给定 $O\in M$, $\rho$ 是相对于 $O$ 的距离函数. 证明
+  (1) $\rho(x)$ 在 $O$ 附近不是 $C^1$ 的;
+  (2) 若 $M$ 为紧流形, 则 $\rho(x)$ 在 $M\setminus\{O\}$ 上也不是 $C^1$ 的.
+\end{exercise}
+
+\begin{proof}
+  (1) 取点 $O$ 的一个法坐标球邻域, $\{x^i\}$ 为法坐标系, 则
+  $\rho(x)=\sqrt{\sum_{i=1}^n (x^i)^2}$, 故 $\frac{\partial\rho}{\partial x^i}=\frac{x^i}{\rho}$,
+  显然极限 $\lim_{\rho\to 0}\frac{\partial\rho}{\partial x^i}$ 不存在, 故 $\rho(x)$
+  在 $O$ 点附近不是 $C^1$ 的.
+
+  (2) 如果流形是球面 $\mathbb{S}^n$, $\gamma(t)$ 是从 $O$ 出发的测地线,
+  即 $\gamma(t)=\exp_O (tv)$, $v$ 是 $M_O$ 中单位向量, 由于当 $t\leq \pi$ 时,
+  \[\rho(\gamma(t)) = d(O,\gamma(t)) = t,\]
+  当 $t\geq\pi$ 时,
+  \[\rho(\gamma(t)) = d(O,\gamma(t)) = 2\pi-t.\]
+  从而 $\rho'(\pi-0)=1$, $\rho'(\pi+0)=-1$,
+  这说明球面上距离函数 $\rho$ 在 $\mathbb{S}^n\setminus\{O\}$
+  中是不可微的. 对于一般的紧流形, 由于 $O$ 点的切割迹内部 $\Sigma(O)$
+  在指数映射下是微分同胚, 即 $\exp_O\colon \Sigma(O)\to \exp_O(\Sigma(O))$
+  是微分同胚, 且 $\Sigma(O)$ 同胚于开单位球, $\Sigma(O)\cup C(O)$
+  同胚于闭单位球, 故沿测地线 $\gamma(t)$ 到达割点时, 有类似于 $\mathbb{S}^n$
+  的性质, 从而仍然有 $\rho(x)$ 在 $M\setminus\{O\}$ 上是不可微的.
+\end{proof}
+
+
+
+\begin{exercise}[6]
+  设 $M$ 是具有正截面曲率的奇数维紧致黎曼流形, 证明 $M$ 是可定向流形.
+\end{exercise}
+
+\begin{proof}
+  如果 $M$ 是不可定向流形, 对 $\forall x\in M$, 在 $M_x$ 中引入等价类,
+  并令 
+  \[\widehat{M}=\{(x,\mu)\mid x\in M, \mu\text{\ 是\ }M_x\text{\ 的一个定向}\}.\]
+  于是 $\widehat{M}$ 是一个可定向流形, 且 $\pi\colon\widehat{M}\to M$
+  是一个二重覆盖, 此时 $\pi\colon (\widehat{M},\pi^*g)\to (M,g)$
+  是局部等距. $M$ 完备, 则 $\widehat{M}$ 也完备. 
+  设 $\pi^{-1}(x)=\{\hat{x}_1,\hat{x}_2\}$, 其中 $\hat{x}_1=(x,\mu_1)$, $\hat{x}_2=(x,\mu_2)$,
+  则 $\widehat{M}$ 中必有连接 $\hat{x}_1$ 与 $\hat{x}_2$ 的最短测地线 $\tilde{\gamma}$,
+  且 $\gamma = \pi\circ\tilde{\gamma}$ 是 $M$ 中不同伦于零的以 $x$ 为基点的最短闭测地线.
+  因为 $M$ 不可定向, 由 $\widehat{M}$ 的构造, 沿 $\gamma$ 必翻转 $M_x$
+  的定向, 于是平移同构 $P^{\gamma}\colon M_x\to M_x$ 的行列式为 $-1$,
+  而 $M$ 是奇数维的, 把 $P^{\gamma}$ 的特征值排列成
+  \[\lambda_1, \overline{\lambda_1}, \cdots, \lambda_k, \overline{\lambda_k},
+    -1, \cdots, -1, +1, \cdots, +1\]
+  后, 特征值 $-1$ 的个数为奇数, 从而特征值 $+1$ 的个数必为偶数.
+  如果 $\gamma\colon [0,b]\to M$, $\gamma(0)=\gamma(b)$, 由于
+  \[P^{\gamma}\bigl(\gamma'(0)\bigr) = \gamma'(b)=\gamma'(0).\]
+  从而存在另一个与 $\gamma'(0)$ 正交的单位向量 $e\in M_x$,
+  使得 $P^{\gamma}(e)=e$, 即 $e(t)$ 是沿 $\gamma$ 的平行向量场,
+  且 $e(0)=e(b)=e$.
+  此时存在一个 $\gamma$ 的单参数闭测地线族 $\gamma_u(t)$,
+  使其变分场 $U(t)$ 即为 Jacobi 场, $U(t)=e(t)$,
+  这个变分的第二变分公式为
+  \[L''(0) = \innerp*{\gamma'}{\D_UU}|_0^b
+    + \int_0^b \Bigl(|{U^{\perp}}'|^2 + \innerp*{R(\gamma', U^{\perp}\gamma')}{U^{\perp}}\Bigr)
+    \diff t.\]
+  由于可以取 $\gamma_u(t)=\exp_{\gamma(t)}uU(t)$,
+  故对每个 $t$, $\sigma_t(u) = \gamma_u(t)$ 是测地线, 从而 $\D_{U(t)}U(t)=0$,
+  又因 $U^{\perp}=U$ 是平行向量场, 所以 ${U^{\perp}}'=0$, 于是
+  \[L''(0) = \int_0^b \innerp*{R(\gamma', U^{\perp})\gamma'}{U^{\perp}}
+    = -\int_0^b |\gamma\wedge U^{\perp}|^2 K(\gamma', U^{\perp})\diff t <0,\]
+  这与 $\gamma$ 是以 $x$ 为基点的不同伦于零的最短闭曲线相矛盾,
+  故假设不成立.
+\end{proof}
+
+
+
+\begin{exercise}[7]
+  设 $(M,g)$ 是单连通完备黎曼流形, $\forall p\in M$, 若 $p$ 点沿所有从 $p$ 出发的径向测地线
+  的第一共轭点都是同一点 $q$ 且 $q\neq p$, $d(p,q)=\pi$,
+  证明: 如果 $K_M\leq 1$, 则 $M$ 与 $\mathbb{S}^n$ 等距.
+\end{exercise}
+
+\begin{proof}
+  $\forall p\in M$, 取单位正交向量 $E_1,E_2\in M_p$,
+  设 $\gamma\colon [0,\pi]\to M, \gamma(t)=\exp_x tE_1$ 是正规测地线, 且 $\gamma(0)=p$, $\gamma'(0)=E_1$,
+  $q=\gamma(\pi)$ 是第一共轭点. 考虑 $\gamma$ 的变分 $\gamma_u(t)\colon [0,\pi]\times(-\epsilon,\epsilon)\to M$
+  使得 $\gamma_u(t)=\exp_p t(E_1\cos u+E_2\sin u)$, 则其变分场 $J(t)$ 是 Jacobi 场,
+  满足 $J(0)=J(\pi)=0$, $J'(0)=E_2$, 且
+  \[J(t) = \left.\frac{\partial}{\partial u}\right|_{u=0}
+    \gamma_u(t) = (\exp_p)_{*tE_1}(tE_2) = t(\exp_p)_{*tE_1} E_2.\]
+  令 $E(t)=(\exp_p)_{*tE_1} E_2$, 则 $E(0)=E_2=J'(0)$, 取沿 $\gamma$ 平行的
+  幺正标架场 $\{e_i(t)\}$ 使得 $e_1(t)=\gamma'(t)$, 并记
+  \[J(t) = \sum_{i=2}^n J^i(t)e_i(t).\]
+  则
+  \begin{align*}
+    0
+    & = I_0^{\pi} (J,J) \\
+    & = \int_0^{\pi} \Bigl(|J'(t)|^2 + \innerp*{R(\gamma'(t),J(t))\gamma'}{J}\Bigr)\diff t \\
+    & = \int_0^{\pi} \biggl(\sum_{i=2}^n |{J^i}'(t)|^2 - K(\gamma'(t), J(t))|J(t)|^2\biggr)\diff t\\
+    & = \int_0^{\pi} \biggl(\sum_{i=2}^n |{J^i}'(t)|^2 - 
+      K(\gamma'(t), J(t))\sum_{i=2}^n |J^i(t)|^2\biggr)\diff t.
+  \end{align*}
+  而由 $J(0)=J(\pi)=0$ 知, 光滑函数 $J^i(t)$ 也满足 $J^i(0)=J^i(\pi)=0$,
+  从而由 Wirtinger 不等式
+  \[\int_0^{\pi} |{J^i}'(t)|^2\diff t\geq \int_0^{\pi} |J^i(t)|^2\diff t,\]
+  得
+  \[0\geq \int_0^{\pi} \bigl(1-K(\gamma'(t),J(t))\bigr)\sum_{i=2}^n |J^i(t)|^2\diff t.\]
+  由于 $K(\gamma'(t),J(t))\leq 1$, $\sum_{i=2}^n |J^i(t)|^2\geq 0$ 且不恒为零, 故
+  \[K(\gamma'(t), J(t))\equiv 1.\]
+  注意到 $J(t)$ 与 $E(t)$ 共线, 故可令 $t\to 0$ 得
+  \[K(\gamma'(t), J(t))=K(\gamma'(t), E(t)) = K(E_1,E_2)\equiv 1.\]
+  由于 $p$ 点是任意的, $E_1$ 与 $E_2$ 也是任意的, 故 $K_M\equiv 1$,
+  又 $M$ 是单连通完备黎曼流形, 从而由等距定理知 $M$ 等距于单位球面 $\mathbb{S}^n$.
+\end{proof}

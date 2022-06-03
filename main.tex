@@ -1,0 +1,58 @@
+\documentclass[a4paper]{article}
+\title{\bfseries 黎曼几何练习题}
+\author{wsy}
+\date{\today}
+\usepackage{ctex}
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{mathrsfs}
+\usepackage[shortlabels]{enumitem}
+\usepackage{physics}
+\usepackage{yhmath}
+
+\setCJKmainfont{FandolSong}
+\newcommand{\diff}{\mathop{}\!\mathrm{d}}
+\renewcommand{\div}{\operatorname{div}}
+\setlist{nosep, left=\parindent}
+\DeclarePairedDelimiterX{\innerp}[2]{\langle}{\rangle}{#1,#2}
+% \DeclareMathOperator{\tr}{tr}
+\DeclareMathOperator{\Hess}{Hess}
+\DeclareMathOperator{\Ric}{Ric}
+\DeclareMathOperator{\D}{D}
+\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator*{\esssup}{ess\,sup}
+
+\makeatletter
+\renewenvironment{proof}[1][\proofname]{\par
+	\pushQED{\qed}%
+	\normalfont\topsep1\p@\@plus6\p@\relax
+	\trivlist
+	\item\relax
+	{\hspace*{\parindent}\textbf{#1}\@addpunct{:}}\hspace\labelsep\ignorespaces
+}{%
+	\popQED\endtrivlist\@endpefalse
+}
+\makeatother
+
+\newcounter{exercise}
+\NewDocumentEnvironment{exercise}{o +b}
+  {
+    \IfNoValueTF{#1}
+      {\stepcounter{exercise}}
+      {\setcounter{exercise}{#1}}
+    \par\textbf{\theexercise. }#2
+  }
+  {}
+
+\begin{document}
+
+\maketitle
+
+\input{exerciseSET1.tex}
+\input{exerciseSET2.tex}
+\input{exerciseSET3.tex}
+\input{exerciseSET4.tex}
+
+
+\end{document}

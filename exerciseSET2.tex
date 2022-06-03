@@ -1,0 +1,116 @@
+\section{练习题二}
+
+
+
+\begin{exercise}[5]
+  设 $\mathbb{R}_+^2=\{(x,y)\in\mathbb{R}^2 \mid y>0\}$,
+  取度量 $g$ 使得 $g_{11}=g_{22}=\frac{1}{y^2}$, $g_{12}=g_{21}=0$.
+  \footnote{$(\mathbb{R}^2_+,g)$ 实际上是 $H^2(-1)$ 的上半平面模型.}
+  \begin{enumerate}[(1)]
+    \item 求 $\mathbb{R}_+^2$ 的度量 $g$ 在坐标系 $(x,y)$ 下的 Christoffel 记号;
+    \item 求 $\mathbb{R}_+^2$ 的测地线;
+    \item 证明 $(\mathbb{R}^2_+,g)$ 是完备的;
+    \item 求 $(\mathbb{R}^2_+,g)$ 的截面曲率;
+    \item 证明 $\mathbb{R}^2_+$ 在任意一点的指数映射是微分同胚.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  (1) 由 Christoffel 记号的表达式
+  \[\Gamma_{ij}^k = \frac{1}{2}g^{kl}\biggl(\pdv{g_{il}}{x^j}
+    + \pdv{g_{jl}}{x^i} - \pdv{g_{ij}}{x^l}\biggr)\]
+  以及
+  \[(g_{ij})=\begin{pmatrix}
+    1/y^2 & 0 \\ 0 & 1/y^2
+  \end{pmatrix},\quad
+  (g^{ij})=\begin{pmatrix}
+    y^2 & 0 \\ 0 & y^2
+  \end{pmatrix}\]
+  直接算得
+  \[\Gamma_{11}^1 = \Gamma_{12}^2 = \Gamma_{21}^2 = \Gamma_{22}^1 = 0,
+    \quad \Gamma_{11}^2 = \frac{1}{y},\]
+  \[\Gamma_{12}^1 = \Gamma_{21}^1 = \Gamma_{22}^2 = -\frac{1}{y}.\]
+
+  (2) $(x,y)$ 已经是 $\mathbb{R}^2_+$ 的正交参数系, 即 $I=E\diff x^2+G\diff y^2$,
+  其中 $E=G=\frac{1}{y^2}$, $F=0$. 设测地线 $\gamma(s)$ 与 $x$ 轴夹角为 $\theta(s)$,
+  由 Liouville 公式,
+  \[\begin{cases}
+    \frac{\diff u}{\diff s} = \frac{1}{\sqrt{E}}\cos\theta, \\ 
+    \frac{\diff v}{\diff s} = \frac{1}{\sqrt{G}}\sin\theta, \\
+    \frac{\diff\theta}{\diff s} = \frac{1}{2\sqrt{G}}\frac{\partial\log E}{\partial v}\cos\theta
+      - \frac{1}{2\sqrt{E}}\frac{\partial\log G}{\partial u}\sin\theta.
+  \end{cases}\]
+  得
+  \[\begin{cases}
+    \frac{\diff x}{\diff s} = y\cos\theta, \\
+    \frac{\diff y}{\diff s} = y\sin\theta, \\
+    \frac{\diff\theta}{\diff s} = -\cos\theta
+  \end{cases}\]
+  若 $\cos\theta=0$, 则 $x=C$, 此时测地线为垂直于 $x$ 轴的射线;
+  若 $\cos\theta\neq 0$, 则分别将上述式子中的第一二式除以第三式得
+  $\diff x=-y\diff\theta$, $\diff y=-y\tan\theta\diff\theta$, 由此解得
+  \[y = c\cos\theta,\quad x = -c\sin\theta+x_0,\quad\biggl(c>0,-\frac{\pi}{2}<\theta<\frac{\pi}{2}\biggr),\]
+  也即
+  \[(x-x_0)^2+y^2 = c^2,\quad y>0,\]
+  此时测地线为以 $(x_0,0)$ 为圆心, 以 $c$ 为半径的上半圆周.
+
+  (3) 由 (2) 中测地线的形式知, 这些测地线可以无限延伸, 因此 $(\mathbb{R}^2_+,g)$
+  是完备的黎曼流形.
+
+  (4) 如果令 $e_1=\frac{\partial}{\partial x}$, $e_2=\frac{\partial}{\partial y}$,
+  则 Gauss 曲率
+  \[K = -\frac{R(e_1,e_2,e_1,e_2)}{|e_1\wedge e_2|^2}.\]
+  将 (1) 中的 $\Gamma_{ij}^k$ 直接代入曲率张量表达式中得
+  \begin{align*}
+    R(e_1,e_2,e_1,e_2)
+    & = \innerp*{R(e_1,e_2)e_1}{e_2} \\
+    & = \innerp*{\D_{e_1}\D_{e_2}e_1-\D_{e_2}\D_{e_1}e_1-\D_{[e_1,e_2]}e_1}{e_2} \\
+    & = \innerp*{\D_{e_1}(\Gamma_{12}^ie_i)-\D_{e_2}(\Gamma_{11}^ie_i)}{e_2} \\
+    & = \frac{1}{y^4},
+  \end{align*}
+  且
+  \[|e_1\wedge e_2|^2 = |e_1|^2|e_2|^2-\innerp*{e_1}{e_2}^2 = \frac{1}{y^4}.\]
+  故 $K=-1$. 也可以代入
+  \[K = -\frac{1}{\sqrt{EG}}\Biggl(\biggl(\frac{(\sqrt{E})_y}{\sqrt{G}}\biggr)_y
+     + \biggl(\frac{(\sqrt{G})_x}{\sqrt{E}}\biggr)_x\Biggr) = -1.\]
+
+  (5) 由于 $\mathbb{R}^2_+$ 为具有非正截面曲率的完备单连通黎曼流形,
+  故由 Cartan-Hadamard 定理知 $\mathbb{R}^2_+$ 在任意一点的指数映射是微分同胚.
+\end{proof}
+
+
+
+\begin{exercise}
+  设 $(M,\D)$ 为 $n$ 维无挠仿射联络空间, $\{e_i\}$ 为 $M$ 上的局部标架场, $\{\omega^i\}$
+  为对偶标架场, 证明对任意 $\theta\in A^r(M)$, 有
+  \begin{enumerate}[(1)]
+    \item $\diff\theta = \sum_{i=1}^n \omega^i\wedge\D_{e_i}\theta$;
+    \item $\diff\theta(X_1,\cdots,X_{r+1}) = \sum_{r=1}^{n+1}(-1)^{r+1} \bigl(\D_{X_i}\theta\bigr)
+      \bigl(X_1,\cdots,\widehat{X_i},\cdots,X_{r+1}\bigr)$, 其中 $X_1\cdots,X_{r+1}\in\mathscr{X}(M)$.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  (1) 取法标架场 $\{e_i\}$, 使得 $\Gamma_{ij}^k(p)=0$, $\{\omega^i\}$ 为余标架场.
+  令 $\theta=\theta_{i_1\cdots i_r}\omega^{i_1}\wedge\cdots\omega^{i_r}$, 
+  注意到此时 $\omega_i^j=\Gamma_{ik}^j\omega^j=0$ ($\forall i,j$), 故 $\diff\omega^i=\omega^j\wedge\omega_j^i=0$, 于是
+  \[\diff\theta = e_i(\theta_{i_1\cdots i_r})\omega^{i}\wedge\omega^{i_1}\wedge\cdots
+    \wedge\omega^{i_r},\]
+  而
+  \begin{align*}
+    \sum_{i=1}^n \omega^i\wedge\D_{e_i}\theta
+    & = \sum_{i=1}^n \omega^i\wedge\theta_{i_1\cdots i_r,i}\omega^{i_1}\wedge\cdots\wedge\omega^{i_r} \\
+    & = \sum_{i=1}^n \theta_{i_1\cdots i_r,i} \omega^i\wedge\omega^{i_1}\wedge\cdots\wedge\omega^{i_r},
+  \end{align*}
+  其中
+  \begin{align*}
+    \theta_{i_1\cdots i_r,i}
+    & = e_i(\theta_{i_1\cdots i_r}) 
+      - \sum_{t=1}^r \Gamma_{i_t i}^k \theta_{i_1\cdots i_{t-1}ki_{t+1}\cdots i_r} \\
+    & = e_i(\theta_{i_1\cdots i_r}).
+  \end{align*}
+  故
+  \[\diff\theta = \sum_{i=1}^n \omega^i\wedge\D_{e_i}\theta.\]
+
+  (2) 上式两边作用在 $(X_1,\cdots,X_{r+1})$ 上即得.
+\end{proof}

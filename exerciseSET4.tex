@@ -1,0 +1,122 @@
+\section{练习题四}
+
+
+
+\begin{exercise}[2]
+  给出一个紧致黎曼流形的例子, 使得对某 $x\in M$, $M_x$
+  中的切割迹和第一共轭轨迹均非空, 但它们互不相同.
+\end{exercise}
+
+\begin{proof}
+  左图是两个半球面中间接一个长为 $4$ 的圆柱面, 右图为大半个球面再将地面光滑化.
+
+  在 (1) 中, $\bar{x}$ 是 $x$ 的第一共轭点, 也是割点, 由于 $d(x,A)=4$,
+  $d(x,\bar{x})=\pi$, $\tilde{\gamma}$ 超过 $A$ 后不是最短, 且有两条最短线连接
+  $x$ 与 $B$, 而 $x$ 与 $A$ 之间只有一条最短线连接, 故 $\mathscr{L}(x)=\wideparen{AB\bar{x}}$.
+
+  在 (2) 中, 红色测地线 $\tilde{\gamma}$ 的长度严格小于 $\pi$, 且
+  $d(x,\bar{x})=L(\tilde{\gamma})=L(\gamma|_{\wideparen{xy}})$,
+  此时沿 $\gamma$, $\bar{x}$ 是第一共轭点, 但 $y$ 是割点, 且连接 $x$ 与 $\bar{x}$
+  的最短测地线只有 $\tilde{\gamma}$ 一条, 此时 $\mathscr{L}(x)=\wideparen{y\bar{x}}$.
+
+  值得注意的是, 由于割点要么是第一共轭点, 要么至少有两条最短测地线, 因此 (1)
+  中的第一共轭轨迹 $\mathscr{K}(x)=\wideparen{AB\bar{x}}$,
+  而 (2) 中 $x$ 的第一共轭轨迹 $\mathscr{K}(x)=\{\bar{x}\}$.
+\end{proof}
+
+\begin{exercise}[7]
+  设 $M$ 是紧致无边定向黎曼流形, $f\in C^{\infty}(M)$, 且 $f\geq 0$, $\Delta f\geq 0$,
+  (称其为非负次调和函数, $\Delta$ 为 Beltrami-Laplace 算子), 则 $f$ 必为常数.
+\end{exercise}
+
+\begin{proof}
+  由于 $M$ 紧致无边, $f\geq 0$, $\Delta f\geq 0$, 故
+  \begin{align*}
+    0
+    & \leq \int_M f\Delta f\diff V_M = \int_M \div(f\nabla f)\diff V_M - \int_M \innerp*{\nabla f}{\nabla f}\diff V_M \\
+    & = -\int_M |\nabla f|^2\diff V_M\leq 0,
+  \end{align*}
+  从而 $|\nabla f|=0$, $f$ 为常值函数.
+\end{proof}
+
+
+
+\begin{exercise}[9]
+  在黎曼流形 $(M,g)$ 上, $f\in C^{\infty}(M)$, 求 $\Delta\bigl(|\nabla f|^2\bigr)$, 并证明
+  \begin{enumerate}[(1)]
+    \item 若 $M$ 是紧致无边的, $\Ric(M)\geq 0$, $\Delta f=C$, 则 $\nabla f$ 是平行向量场;
+    \item 若 $\Ric(M)\geq 0$, $\Delta f=C$, $|\nabla f|=C$, 则 $\nabla f$ 是平行向量场.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  先推导 Weitzenb\"ock 公式的特殊形式, 对任意 $f\in C^{\infty}(M)$,
+  \begin{align*}
+    \Delta|\nabla f|^2
+    & = \Delta\biggl(\sum_{i=1}^n f_i^2\biggr) = \biggl(\sum_{i=1}^n f_i^2\biggr)_{,jj} \\
+    & = (2f_if_{i,j})_{,j} = 2f_{i,j}f_{i,j}+2f_if_{i,jj} \\
+    & = 2|\D^2f|^2 + 2f_if_{j,ij}.
+  \end{align*}
+  由 Ricci 恒等式\footnote{见黎曼几何引论 Page 253.}
+  \[f_{j,ij} = f_{j,ji} + f_kR_{jij}^k,\]
+  代入得
+  \begin{equation}
+    \begin{aligned}
+      \Delta|\nabla f|^2
+      & = 2|\D^2f|^2 + 2f_i(\Delta f)_i + 2f_if_kR_{jkij} \\
+      & = 2|\D^2f|^2 + 2\innerp*{\nabla f}{\nabla(\Delta f)} + 2\Ric(\nabla f,\nabla f).
+    \end{aligned}\tag{$\star$}
+  \end{equation}
+
+  (1) 由于 $M$ 是紧致无边流形, 将 ($\star$) 式在 $M$ 上积分, 结合散度定理得
+  \begin{align*}
+    0
+    & = \int_M \Delta|\nabla f|^2\diff V_M \\
+    & = 2\int_M |\D^2f|^2\diff V_M +2\int_M \innerp*{\nabla f}{\nabla(\Delta f)}\diff V_M
+      + 2\int_M \Ric(\nabla f,\nabla f)\diff V_M \\
+    & \geq 2\int_M |\D^2f|^2\diff V_M\geq 0.
+  \end{align*}
+  故 $|\D^2f|^2=0\Rightarrow \D(\nabla f)=0$, 所以 $\nabla f$ 是平行向量场.
+
+  (2) 把已知条件代入 ($\star$) 式, 即得
+  \[0 = \Delta|\nabla f|^2 = 2|\D^2f|^2+2\Ric(\nabla f,\nabla f)\geq 2|\D^2f|^2\geq 0,\]
+  于是 $\D^2f=0$, $\nabla f$ 为平行向量场.
+\end{proof}
+
+
+
+\begin{exercise}
+  回答下列问题:
+  \begin{enumerate}[(1)]
+    \item 黎曼流形上的全凸子集与凸子集是否相同? 举例说明.
+    \item 是否存在黎曼流形, 其上的第一共轭轨迹与割迹均非空, 但不相同.
+    \item 什么样的黎曼流形上有不同伦于零的闭曲线, 使其在该流形上所有不同伦于零的分段光滑闭曲线中长度最短?
+    \item 黎曼流形上到一定点 $O$ 的距离函数 $\rho(x)=d(x,O)$ 是否连续? 是否可微? 距离函数的平方 $\rho^2(x)$ 呢？
+      求欧氏空间中 $\rho^2(x)$ 的 Hessian.
+  \end{enumerate}
+\end{exercise}
+
+\begin{proof}
+  \renewcommand{\proofname}{解}
+  (1) 不一定相同, 例如在单位球面 $\mathbb{S}^2\subset\mathbb{R}^3$ 上,
+  半径 $\delta\leq\frac{\pi}{2}$ 的开距离球 $U_{\delta}$ 是凸的,
+  但不是全凸的.
+
+  (2) 存在, 例如将单位球面 $\mathbb{S}^2$ 用平面截取出大半个球面, 再将底面边缘光滑化,
+  此时第一共轭轨迹为 $\mathscr{K}(x)=\{\bar{x}\}$,
+  割迹 $\mathscr{C}(x)$ 如图所示.
+
+  (3) 紧致的非单连通黎曼流形.\footnote{讲义第七讲 Page 19.}
+
+  (4) 距离函数 $\rho(x)$ 是连续的, 但不一定是可微的. 
+  距离函数的平方 $\rho^2(x)$ 是可微的. 下面求 $\rho^2(x)$ 的 Hessian,
+  对于任意 $X,Y\in\mathbb{R}^n$, 有
+  \begin{align*}
+    \D^2\rho^2(X,Y)
+    & = \D^2\innerp*{x}{x}(X,Y) \\
+    & = \D(2x^i\diff x^i)(X,Y) \\
+    & = 2\diff x^i\otimes\diff x^i(X,Y) \\
+    & = 2\innerp{X}{Y},
+  \end{align*}
+  故 $\Hess(\rho^2)=\D^2\rho^2=2g$, 其中 $g$ 为欧式空间中的标准度量.
+\end{proof}
